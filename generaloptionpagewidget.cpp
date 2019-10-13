@@ -1,5 +1,4 @@
 #include "generaloptionpagewidget.h"
-#include "ui_generaloptionpagewidget.h"
 
 #include "mefestpluginconstants.h"
 

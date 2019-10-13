@@ -18,10 +18,6 @@ HEADERS +=         mefestpluginplugin.h         mefestplugin_global.h         me
     utils.h
 
 
-FORMS += \
-    generaloptionpagewidget.ui
-
-
 # Qt Creator linking
 
 ## Either set the IDE_SOURCE_TREE when running qmake,
