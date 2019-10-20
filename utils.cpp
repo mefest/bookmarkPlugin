@@ -44,27 +44,6 @@ QVector<QKeySequence> getFromSettingKeySeqGetMarks()
     return listGetMarksSeqKey;
 }
 
-QIcon getBookmarkIcon(int num, int size)
-{
-    QIcon result;
-    auto pix = new QPixmap(size, size);
-    auto paint = new QPainter(pix);
-
-    paint->setRenderHint(QPainter::Antialiasing, false);
-
-    paint->fillRect(0, 0, size, size, QColor(100, 100, 100));
-    paint->setPen(QColor(255, 255, 255));
-    paint->setBrush(Qt::NoBrush);
-    QFont sansFont("Helvetica [Cronyx]", size - 20);
-    paint->setFont(sansFont);
-    paint->drawRect(0, 0, size - 1, size - 1);
-    paint->drawText(0, 0, size - 1, size - 1, Qt::AlignCenter, QString::number(num));
-
-    result.addPixmap(*pix);
-
-    return result;
-}
-
 } // namespace Utils
 } // namespace Internal
 } // namespace mefestPlugin

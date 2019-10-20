@@ -9,7 +9,7 @@ namespace Internal {
 namespace Utils {
 QVector<QKeySequence> getFromSettingKeySeqSetMarks();
 QVector<QKeySequence> getFromSettingKeySeqGetMarks();
-QIcon getBookmarkIcon(int num, int size = 64);
+
 } // namespace Utils
 } // namespace Internal
 } // namespace mefestPlugin

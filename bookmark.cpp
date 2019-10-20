@@ -1,6 +1,9 @@
 #include "bookmark.h"
 #include "utils.h"
 
+#include <QPainter>
+#include <QPixmap>
+
 namespace mefestPlugin {
 namespace Internal {
 
@@ -9,10 +12,10 @@ Bookmark::Bookmark(int num,
                    int lineNumber,
                    Core::Id category,
                    double widthFactor)
-    : _number(num)
-    , TextEditor::TextMark(fileName, lineNumber, category, widthFactor)
+    : TextEditor::TextMark(fileName, lineNumber, category, widthFactor)
+    , _number(num)
 {
-    setIcon(Utils::getBookmarkIcon(num + 1));
+    setIcon(drawIcon());
 }
 
 void Bookmark::removedFromEditor()
@@ -25,6 +28,32 @@ void Bookmark::removedFromEditor()
 void Bookmark::setManager(BookmarkManager *manager)
 {
     _manager = manager;
+}
+
+QIcon Bookmark::drawIcon() const
+{
+    QIcon result;
+    auto pix = new QPixmap(ICON_SIZE, ICON_SIZE);
+    auto paint = new QPainter(pix);
+
+    paint->setRenderHint(QPainter::Antialiasing, false);
+
+    paint->fillRect(0, 0, ICON_SIZE, ICON_SIZE, Qt::darkGray);
+    paint->setPen(Qt::white);
+    paint->setBrush(Qt::NoBrush);
+    QFont sansFont("Helvetica [Cronyx]", FONT_SIZE);
+    paint->setFont(sansFont);
+    paint->drawRect(0, 0, ICON_SIZE - 1, ICON_SIZE - 1);
+    paint->drawText(0,
+                    0,
+                    ICON_SIZE - 1,
+                    ICON_SIZE - 1,
+                    Qt::AlignCenter,
+                    QString::number(_number + 1));
+
+    result.addPixmap(*pix);
+
+    return result;
 }
 
 } // namespace Internal

@@ -1,6 +1,8 @@
 #ifndef BOOKMARK_H
 #define BOOKMARK_H
 
+#include <QImage>
+
 #include "bookmarkmanager.h"
 #include <texteditor/textmark.h>
 #include <utils/fileutils.h>
@@ -22,7 +24,11 @@ public:
 
 private:
     int _number = 0;
+    const int ICON_SIZE = 64;
+    const int FONT_SIZE = ICON_SIZE - 10;
     BookmarkManager *_manager;
+
+    QIcon drawIcon() const;
 };
 
 } // namespace Internal
