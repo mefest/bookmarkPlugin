@@ -29,7 +29,7 @@ QWidget *GeneralOptionPage::widget()
 
 void GeneralOptionPage::saveSettings()
 {
-    if (_settingsWidget->isChanged()) {
+    if (_settingsWidget && _settingsWidget->isChanged()) {
         QSettings *settings = Core::ICore::instance()->settings();
         QVector<QKeySequence> keySeq = _settingsWidget->getSeqSetMark();
         settings->beginGroup(Constants::PLUGIN_NAME);
@@ -46,8 +46,8 @@ void GeneralOptionPage::saveSettings()
         }
         settings->endGroup();
         settings->endGroup();
+        _settingsWidget->reset();
     }
-    _settingsWidget->reset();
 }
 
 void GeneralOptionPage::restoreSettings()

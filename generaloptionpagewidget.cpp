@@ -5,6 +5,7 @@
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QVBoxLayout>
+#include <QtDebug>
 namespace mefestPlugin {
 GeneralOptionPageWidget::GeneralOptionPageWidget(QWidget *parent)
     : QWidget(parent)

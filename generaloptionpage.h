@@ -17,7 +17,7 @@ public:
     QWidget *widget();
     void apply() override;
     void finish() override;
-    GeneralOptionPageWidget *_settingsWidget;
+    GeneralOptionPageWidget *_settingsWidget = nullptr;
 
 private:
     void saveSettings();
